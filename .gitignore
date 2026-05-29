@@ -1,0 +1,16 @@
+# 部署/工具产物
+.deploy-params.json
+.vercel/
+.vercel
+.vercel-tmp/
+
+# 内部点子卡片 / 调研稿（含敏感招聘背景）
+*.md
+
+# 系统/编辑器
+.DS_Store
+*.bak
+*.log
+
+# Node
+node_modules/

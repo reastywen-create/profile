@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<!--
+  AI Agent PM · 个人作品集站 · One-Pager
+  ============================================================
+  克制度档: 中度（工具感）
+  主题色: 🍂 牛皮纸 Kraft Paper（深棕 + 暖米，Anthropic 调性）
+  内容类型: 产品能力盘点（个人作品集站变体）
+  受众: AI Agent PM 岗位招聘方（HR + 用人方）
+  上游: /Users/shipu/profile/20260527-ai-native-portfolio.md
+  生成日期: 2026-05-27
+  下游: easy-deploy（Mode V Vercel）
+-->
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agent PM · Portfolio · 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+  :root{
+    /* 🍂 牛皮纸 Kraft Paper · 主题色 */
+    --ink:#2a1e13;
+    --paper:#eedfc7;
+    --bg:#fafafa;
+    --muted:rgba(42,30,19,.62);
+    --faint:rgba(42,30,19,.40);
+    --rule:rgba(42,30,19,.12);
+    --rule-soft:rgba(42,30,19,.06);
+    --accent:#b85c2a; /* 暖橘 accent，仅用于占位标记 */
+
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+    --sans:"Inter","Noto Sans SC",-apple-system,BlinkMacSystemFont,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{padding-bottom:8vh;font-feature-settings:"tnum","ss01"}
+
+  /* ─── 顶部导航 ─── */
+  header.top{position:sticky;top:0;z-index:50;background:rgba(250,250,250,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+  header.top .inner{max-width:1080px;margin:0 auto;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;gap:24px}
+  header.top .brand{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.02em}
+  header.top .brand b{color:var(--ink);font-weight:500}
+  header.top nav{display:flex;gap:20px}
+  header.top nav a{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;transition:color .15s}
+  header.top nav a:hover{color:var(--ink)}
+
+  /* ─── 容器 ─── */
+  main{max-width:1080px;margin:0 auto;padding:0 32px}
+  section{padding:96px 0;border-bottom:1px solid var(--rule)}
+  section.hero-section{background:var(--paper);margin:0 -32px;padding:96px 32px;min-height:90vh;display:flex;flex-direction:column;justify-content:center;border-bottom:1px solid var(--rule)}
+  section.hero-section .hero-inner{max-width:1016px;margin:0 auto;width:100%}
+  section:last-of-type{border-bottom:0}
+
+  /* ─── 排版基础 ─── */
+  .h1{font-size:64px;line-height:1.05;letter-spacing:-.022em;font-weight:800}
+  .h2{font-size:32px;line-height:1.18;letter-spacing:-.012em;font-weight:700}
+  .h3{font-size:18px;line-height:1.4;font-weight:600}
+  .lead{font-size:17px;line-height:1.6;color:var(--muted);max-width:62ch;font-weight:400}
+  .body{font-size:14.5px;line-height:1.6;color:var(--muted)}
+  .meta{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.02em}
+  .num{font-family:var(--mono);font-size:12px;color:var(--faint);font-weight:500;letter-spacing:.02em}
+
+  /* ─── 占位标记 ─── */
+  .todo{display:inline-block;font-family:var(--mono);font-size:11px;color:var(--accent);background:rgba(184,92,42,.08);padding:2px 8px;border-radius:3px;letter-spacing:.02em;border:1px dashed rgba(184,92,42,.3)}
+
+  /* ─── HERO ─── */
+  .hero-meta{display:flex;align-items:center;gap:8px;margin-bottom:32px}
+  .hero-meta .dot{width:6px;height:6px;background:var(--ink);border-radius:50%}
+  .hero-meta .label{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:64px;padding-top:32px;border-top:1px solid var(--rule)}
+  .hero-stats .stat .nb{font-size:48px;line-height:1;font-weight:700;letter-spacing:-.02em}
+  .hero-stats .stat .nb .u{font-size:16px;font-weight:500;color:var(--muted);margin-left:6px;letter-spacing:0;font-family:var(--mono)}
+  .hero-stats .stat .lb{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.5}
+
+  .hero-info{margin-top:48px;display:grid;grid-template-columns:repeat(4,auto);gap:0 48px;font-family:var(--mono);font-size:12px}
+  .hero-info dt{color:var(--faint);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+  .hero-info dd{color:var(--ink);font-weight:500}
+
+  /* ─── section 头部 ─── */
+  .sec-head{margin-bottom:48px}
+  .sec-head .num{display:block;margin-bottom:12px}
+  .sec-head .lead{margin-top:16px}
+
+  /* ─── 双栏 layer ─── */
+  .layers{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:8px}
+  .layer{padding-top:24px;border-top:2px solid var(--ink)}
+  .layer .tag{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-bottom:16px;display:flex;justify-content:space-between;gap:16px}
+  .layer .tag b{color:var(--ink);font-weight:500}
+  .layer h3{font-size:22px;line-height:1.25;font-weight:700;margin-bottom:12px}
+  .layer .desc{color:var(--muted);font-size:14.5px;margin-bottom:20px;line-height:1.6}
+  .layer ul{list-style:none}
+  .layer ul li{font-size:14px;line-height:1.6;padding:12px 0;border-top:1px solid var(--rule-soft)}
+  .layer ul li b{font-weight:600;color:var(--ink)}
+  .layer ul li .ord{font-family:var(--mono);font-size:11px;color:var(--faint);margin-right:10px}
+
+  /* ─── 4 行式 domain ─── */
+  .domains{margin-top:8px}
+  .domain{display:grid;grid-template-columns:200px 1fr;gap:48px;padding:32px 0;border-top:1px solid var(--rule)}
+  .domain:last-child{border-bottom:1px solid var(--rule)}
+  .domain .lead-col .num{display:block;margin-bottom:6px}
+  .domain .lead-col h3{font-size:22px;line-height:1.25;font-weight:700;font-family:var(--mono);letter-spacing:-.01em}
+  .domain .lead-col .count{font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-top:8px}
+  .domain .body-col p{color:var(--muted);font-size:14.5px;margin-bottom:14px;max-width:60ch;line-height:1.65}
+  .domain .body-col p b{color:var(--ink);font-weight:600}
+  .domain .body-col ul{list-style:none}
+  .domain .body-col ul li{font-size:13.5px;line-height:1.55;padding:6px 0;color:var(--ink)}
+  .domain .body-col ul li::before{content:"·";color:var(--faint);margin-right:10px}
+  .domain .body-col ul li b{font-weight:600}
+
+  /* ─── 卡片网格 ─── */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px}
+  .card{padding-top:20px;border-top:1px solid var(--ink)}
+  .card .num{display:block;margin-bottom:8px}
+  .card .name{font-size:18px;font-weight:700;line-height:1.25;margin-bottom:10px}
+  .card .desc{font-size:13px;line-height:1.6;color:var(--muted)}
+  .card .desc b{color:var(--ink);font-weight:600}
+  .card .map{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:14px;padding-top:12px;border-top:1px solid var(--rule-soft)}
+
+  /* ─── 双栏边界 ─── */
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:8px}
+  .twocol .col h3{font-size:16px;font-weight:600;margin-bottom:8px;display:flex;justify-content:space-between;align-items:baseline}
+  .twocol .col h3 .meta{font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:400}
+  .twocol .col ul{list-style:none}
+  .twocol .col ul li{font-size:14px;line-height:1.55;padding:14px 0;border-top:1px solid var(--rule);color:var(--ink)}
+  .twocol .col ul li:last-child{border-bottom:1px solid var(--rule)}
+  .twocol .col ul li b{font-weight:600}
+  .twocol .col ul li .k{font-family:var(--mono);font-size:11px;color:var(--faint);margin-right:8px;text-transform:uppercase;letter-spacing:.04em}
+  .twocol .col.muted ul li{color:var(--muted)}
+
+  /* ─── mermaid wrapper ─── */
+  .mermaid-wrap{margin:8px 0 32px;padding:32px;background:var(--paper);border-radius:4px;overflow-x:auto}
+  .mermaid-wrap .mermaid{font-family:var(--sans)!important}
+
+  /* ─── callout ─── */
+  .callout{margin-top:40px;padding:24px 28px;border-left:3px solid var(--ink);background:rgba(42,30,19,.03)}
+  .callout .ck{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px}
+  .callout p{font-size:14.5px;line-height:1.65;color:var(--ink)}
+  .callout p b{font-weight:600}
+
+  /* ─── Footer ─── */
+  footer{margin-top:64px;padding:32px 0;font-family:var(--mono);font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--rule)}
+
+  /* ─── 响应式 ─── */
+  @media (max-width:840px){
+    .h1{font-size:42px}
+    .h2{font-size:26px}
+    .hero-stats{grid-template-columns:1fr;gap:24px}
+    .hero-info{grid-template-columns:repeat(2,1fr);gap:24px}
+    .layers,.twocol{grid-template-columns:1fr;gap:32px}
+    .domain{grid-template-columns:1fr;gap:16px}
+    .cards{grid-template-columns:1fr}
+    header.top nav{display:none}
+    main,header.top .inner{padding-left:24px;padding-right:24px}
+    section{padding:64px 0}
+    section.hero-section{padding:64px 24px;margin:0 -24px;min-height:auto}
+  }
+
+  @media print{
+    body{background:white}
+    header.top{display:none}
+    section{break-inside:avoid;padding:32px 0}
+    section.hero-section{background:white;min-height:auto}
+    main{max-width:none;padding:0 24px}
+    .todo{border:none;background:none;color:#999}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <div class="brand"><b>Portfolio</b> &nbsp;/&nbsp; AI Agent PM &nbsp;/&nbsp; 2026.05</div>
+    <nav>
+      <a href="#s1">01 openclaude</a>
+      <a href="#s2">02 理财工具</a>
+      <a href="#s3">03 Harness</a>
+      <a href="#s4">04 能力坐标</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero-section">
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span class="dot"></span>
+      <span class="label">Portfolio of an AI Agent PM · v0.1 · 2026</span>
+    </div>
+
+    <h1 class="h1">懂产品，<br>也懂 Agent 工程化。</h1>
+
+    <p class="lead" style="margin-top:24px;font-size:18px;color:var(--ink);opacity:.78">
+      两个个人 AI Native 作品 + 一套我自己 own 的 AI Agent Harness。<br>
+      不是 PPT，是每天在自己机器上跑的产品和方法。
+    </p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="nb">3<span class="u">products</span></div>
+        <div class="lb">个人 AI Native 作品<br>openclaude · 理财工具 · Agent Harness</div>
+      </div>
+      <div class="stat">
+        <div class="nb">5<span class="u">harness 件套</span></div>
+        <div class="lb">Skills(17) · Subagent · Rules<br>Memory · Agent Loop 齐全</div>
+      </div>
+      <div class="stat">
+        <div class="nb">17<span class="u">skills</span></div>
+        <div class="lb">端到端 SDLC 产品开发工作流<br>idea → 调研 → 设计 → 开发 → 部署</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- §01 openclaude · C 位 hands-on -->
+<section id="s1">
+  <div class="sec-head">
+    <span class="num">§ 01 — HANDS-ON</span>
+    <h2 class="h2">openclaude · 内部模型 API 资源的 PM 工作台</h2>
+    <p class="lead">拿到一个可调用的内部模型 API 资源时做的第一个端到端产品。当时只想要一个能自己长期维护、决策都讲得清的产品——这就是 openclaude。不能开源，但每一条产品决策都可以讲。</p>
+  </div>
+
+  <div class="layers">
+    <div class="layer">
+      <div class="tag"><span>产品形态</span><b>Desktop · macOS</b></div>
+      <h3>30 秒产品钩子</h3>
+      <div class="desc">调用公司内部 Claude API 的 macOS 桌面客户端，形态对标 Cursor / Claude Desktop。我每天把它当 PM 副驾驶用，同时也用它跑测自己的 Agent Harness——边用边发现 skill / rule / memory 的边界问题，回头修整套体系，也迭代产品本身。</div>
+      <ul>
+        <li><span class="ord">DEMO</span><b>产品演示视频</b> · <span class="todo">TODO: 30 秒视频链接</span></li>
+      </ul>
+    </div>
+    <div class="layer">
+      <div class="tag"><span>关键产品决策</span><b>3 条</b></div>
+      <h3>为什么这么做</h3>
+      <div class="desc">从立项到形态选型的完整思考链。</div>
+      <ul>
+        <li><span class="ord">01</span><b>定位</b> · 拿到内部模型 API 资源后，需要一个能自己长期维护的端到端产品，把 PM 工作流真正落到产品决策上，而不只停留在 prompt 层</li>
+        <li><span class="ord">02</span><b>形态选型</b> · 选客户端而非 Web，对齐 Cursor / Claude Desktop 这类已被市场验证的 Agent 工作台形态</li>
+        <li><span class="ord">03</span><b>纵深目的</b> · 本职在做的电商 AI Agent 也是端形态产品，openclaude 让我在自有项目中深入 agent 执行、工具调用、记忆存储等技术细节，直接用到本职工作上；同时它也是 Agent Harness 五件套的真实跑测场，反过来驱动整套体系迭代</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- §02 个人理财 · 端到端佐证 -->
+<section id="s2">
+  <div class="sec-head">
+    <span class="num">§ 02 — END-TO-END</span>
+    <h2 class="h2">个人理财工具 · 前后端 + 部署一人 own</h2>
+    <p class="lead">不是设计稿、不是 demo——这是一个长期自用、跑在公网、有真实数据流的全栈工具。</p>
+  </div>
+
+  <div class="twocol">
+    <div class="col">
+      <h3>技术栈 <span class="meta">Stack</span></h3>
+      <ul>
+        <li><span class="k">URL</span><b><a href="https://reastytoy.cn" target="_blank" style="color:var(--ink);text-decoration:underline">reastytoy.cn</a></b>（demo 密码：demo2026）</li>
+        <li><span class="k">Stack</span><b>Vite + React + Hono + SQLite + 阿里云 ECS</b></li>
+        <li><span class="k">Owner</span>一人需求 · 一人设计 · 一人开发 · 一人运维</li>
+        <li><span class="k">Use</span>本人长期自用 · 真实数据流验证</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- §03 AI Agent Harness · 五件套 · 压轴 -->
+<section id="s3">
+  <div class="sec-head">
+    <span class="num">§ 03 — AGENT HARNESS</span>
+    <h2 class="h2">一套我自己 own 的 AI Agent Harness</h2>
+    <p class="lead">不是 17 个孤立的 skill，而是 <b>Skills + Subagent + Rules + Memory + Agent Loop</b> 五件套齐全的个人 agent 支架——每天跑在我自己机器上，边用边修，反过来驱动整套体系迭代。</p>
+  </div>
+
+  <!-- 五件套总图 · Loop 居中调度，Rules/Memory 约束输入，Skills/Subagent 被调度 -->
+  <div class="mermaid-wrap">
+    <pre class="mermaid">
+flowchart LR
+    R[Rules<br/>always-on 行为约束]:::sat -.约束.-> LOOP
+    M[Memory · Experience<br/>跨会话长期记忆]:::sat -.上下文.-> LOOP
+    LOOP[Agent Loop<br/>dev-planning 编排]:::core --调度--> S[Skills × 17<br/>SDLC 全流程能力]:::sat
+    LOOP --派发--> SA[Subagent<br/>dev-executor]:::sat
+
+    classDef core fill:#eedfc7,stroke:#2a1e13,stroke-width:2.5px,color:#2a1e13
+    classDef sat fill:#fafafa,stroke:#2a1e13,color:#2a1e13
+    </pre>
+  </div>
+
+  <!-- spotlight 三件套 · 覆盖五件套全部组件 -->
+  <div class="domains">
+    <div class="domain">
+      <div class="lead-col">
+        <span class="num">SPOTLIGHT 01</span>
+        <h3>Skills · 17 个 SDLC skill</h3>
+        <div class="count">从需求塑形到上线部署 · 全链路覆盖</div>
+      </div>
+      <div class="body-col">
+        <p>17 个 skill 覆盖完整 SDLC——<b>松耦合可独立运行，也能端到端串联</b>。每个 skill 都是一份 SOP 化的 markdown，agent 触发后按章节走，不靠即兴发挥。</p>
+        <ul>
+          <li><b>分层链路</b>：idea-shaping → product-research / requirement-analysis → product-design → ui-design / tech-design → dev-planning → spec-driven-frontend / spec-driven-backend / ai-agent-engineering → test-guard → easy-deploy</li>
+          <li><b>_shared/ 协议复用</b>：跨 skill 复用的协议（AI Agent 项目两步判定、5 维度设计评审、9 段式 DESIGN.md 等）统一抽到 <code style="font-family:var(--mono);font-size:13px">_shared/</code>，单 skill 内禁止重复造轮子</li>
+          <li><b>设计取舍</b>：宁可让 skill SOP 严苛，也不让 agent 自由发挥——每个 skill 都带"不适用"清单防越界</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="domain">
+      <div class="lead-col">
+        <span class="num">SPOTLIGHT 02</span>
+        <h3>Subagent + Agent Loop</h3>
+        <div class="count">dev-planning ↔ dev-executor · 协议化握手</div>
+      </div>
+      <div class="body-col">
+        <p>大项目让单个 agent 一路跑容易跑偏。<b>dev-planning 负责"拆 + 管"，dev-executor 负责"干"</b>——上下文短、职责清、每一步都能停下来等人确认。</p>
+        <ul>
+          <li><b>任务再切片</b>：每个 Milestone 太大就切成 Slice，每个 Slice 派一个 dev-executor 子 agent 单独干，上下文短、不串味</li>
+          <li><b>scope 冻结</b>：每个 Slice 开工前写死"做什么 / 不做什么 / 哪些是红线"，子 agent 不能自作主张砍功能或加功能</li>
+          <li><b>HITL 人工卡点</b>：关键决策必须停下来等人确认，agent 不能偷偷跳过——信任靠协议保障，不靠默认</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="domain">
+      <div class="lead-col">
+        <span class="num">SPOTLIGHT 03</span>
+        <h3>Rules + Memory</h3>
+        <div class="count">agent 的常驻意识 · 跨会话学习</div>
+      </div>
+      <div class="body-col">
+        <p>Skills 是"被触发才用"的能力库，<b>Rules 和 Memory 才是 agent 的常驻意识</b>——前者是 always-on 的行为约束，后者是跨会话累积的经验。两者一起，让 agent 越用越懂我。</p>
+        <ul>
+          <li><b>Rules</b>：项目级 always-on 约束（中文回复、不擅自创建文档、不绕过 SOP 直接写码等），不需触发，每次推理都生效</li>
+          <li><b>Memory</b>：用户偏好 / 项目背景 / 经验教训分类沉淀，agent 在执行前主动召回，避免反复问相同问题</li>
+          <li><b>Experience</b>：把成功的工作流（如"作品集文案专业性优化流程"）沉淀成可复用的步骤模板，下次直接套用</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- harness 自循环 callout -->
+  <div class="callout">
+    <div class="ck">— 五件套自循环</div>
+    <p>这套 harness 不是设计完就冻结的——<b>我每天用它做 PM 工作</b>（写 PRD、调研、做方案、跑 demo），每次跑到不顺手的地方就回头改 skill / 调 rule / 沉淀 experience。<b>产品在用 harness，harness 也在被产品打磨</b>——这是它从"个人玩具"变成"可演进资产"的根本原因。</p>
+  </div>
+</section>
+
+
+<!-- §04 AI Native 能力坐标 -->
+<section id="s4">
+  <div class="sec-head">
+    <span class="num">§ 04 — CAPABILITY MAP</span>
+    <h2 class="h2">三个项目 · 三个能力维度</h2>
+    <p class="lead">从 AI Agent PM 岗位视角看，这三个项目各自能证明一类不同的能力。</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <span class="num">AXIS 01</span>
+      <div class="name">Hands-on 工程能力</div>
+      <div class="desc"><b>openclaude</b> 是一个端形态客户端产品——本地存储、进程模型、打包分发这些细节都能聊，不停留在 prompt 工程层。</div>
+      <div class="map">▸ openclaude</div>
+    </div>
+    <div class="card">
+      <span class="num">AXIS 02</span>
+      <div class="name">端到端产品 ownership</div>
+      <div class="desc"><b>个人理财工具</b> 是一个真实跑在公网、长期自用的全栈产品——需求、设计、开发、部署、运维都由一个人完成。</div>
+      <div class="map">▸ 个人理财工具</div>
+    </div>
+    <div class="card">
+      <span class="num">AXIS 03</span>
+      <div class="name">Agent 编排能力</div>
+      <div class="desc"><b>Agent Harness 五件套</b> 证明的是对 agent 的编排能力——不只是用 AI，还能定义、约束、调度 AI 的工作方式（Skills · Subagent · Rules · Memory · Loop 齐全），并已在多个项目中复用验证。</div>
+      <div class="map">▸ Agent Harness</div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div>AI Agent PM Portfolio · v0.1 · 2026.05.27</div>
+  <div>Source · Personal Productions × Self-built Agent Harness</div>
+</footer>
+
+</main>
+
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      fontFamily: 'Inter, "Noto Sans SC", sans-serif',
+      fontSize: '13px',
+      primaryColor: '#eedfc7',
+      primaryTextColor: '#2a1e13',
+      primaryBorderColor: '#2a1e13',
+      lineColor: '#2a1e13',
+      secondaryColor: '#fafafa',
+      tertiaryColor: '#fafafa',
+      background: '#eedfc7',
+      mainBkg: '#fafafa',
+      textColor: '#2a1e13'
+    },
+    flowchart: { curve: 'basis', padding: 16 }
+  });
+</script>
+
+<!-- PRESENTATION META
+  克制度: 中度（工具感）
+  内容类型: 产品能力盘点（个人作品集站变体）
+  受众: AI Agent PM 岗位招聘方（HR + 用人方）
+  主题色: 🍂 牛皮纸 Kraft Paper（深棕 + 暖米，Anthropic 调性，仅 hero 段使用 paper bg）
+  上游: /Users/shipu/profile/20260527-ai-native-portfolio.md（点子卡片）
+        /Users/shipu/profile/README.md（17-skill 总览 · 压轴段核心素材）
+  生成日期: 2026-05-27
+  下游: easy-deploy（Mode V Vercel + 自有域名）
+
+  方案表回执：
+    ① 档位 · 中度档
+    ② 主题色 · 🍂 牛皮纸 Kraft Paper
+    ③ 内容类型 · 产品能力盘点（作品集站）
+    ④ 章节大纲 · 6 段（Hero + openclaude + 理财 + Agent Harness + 能力坐标 + Contact）
+    ⑤ Layout · §1 hero / §2 layers 双栏 / §3 twocol / §4 mermaid+domains+callout / §5 cards / §6 twocol
+    ⑥ 关键数字 · 3 products · 5 harness 件套 · 1 runtime
+    ⑦ 节奏 · 信息密集（§1 §3 §4）↔ 大留白（hero §2 §5 §6）
+    ⑧ 命名 · ai-native-portfolio-20260527.html
+    ⑨ 硬约束 · 颜色 ≤ 2 主+3 灰阶 ✓ / 字体 ≤ 2 ✓ / 不套娃 ✓ / 章节风格一致 ✓ / 合规红线 ✓
+-->
+
+</body>
+</html>

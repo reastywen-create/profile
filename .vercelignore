@@ -1,0 +1,7 @@
+# 敏感与开发产物，不发布到公网
+*.md
+.vercel-tmp/
+.DS_Store
+*.bak
+node_modules/
+.git/
