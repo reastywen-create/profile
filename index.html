@@ -345,6 +345,37 @@ flowchart LR
     </div>
   </div>
 
+  <!-- skill 串联 · SDLC 流水线总图（SPOTLIGHT 01 展开） -->
+  <div style="margin-top:64px;padding-top:40px;border-top:1px solid var(--rule)">
+    <span class="num" style="display:block;margin-bottom:12px">DEEP-DIVE · SKILLS 全景</span>
+    <h3 style="font-size:22px;line-height:1.25;font-weight:700;margin-bottom:10px">17 个 Skill 怎么串起来 — SDLC 流水线总图</h3>
+    <p class="body" style="max-width:64ch;margin-bottom:24px">从模糊想法到推上公网，覆盖完整 SDLC。<b style="color:var(--ink);font-weight:600">实线 = 主路径，虚线 = 旁路</b>——任何 skill 都可独立运行（无上游也能跑），也能端到端串联。</p>
+    <div class="mermaid-wrap">
+      <pre class="mermaid">
+flowchart LR
+    S0["⓪ 破题<br/>idea-shaping"]
+    S1["① 探索与需求<br/>product-research<br/>requirement-analysis"]
+    S2["② 方案设计<br/>product-design<br/>ui-design · tech-design"]
+    S25["②⁺ 开发编排<br/>dev-planning"]
+    S3["③ 工程落地<br/>spec-driven-frontend · spec-driven-backend<br/>ai-agent-engineering · easy-build"]
+    S35["③⁺ 质量守卫<br/>test-guard"]
+    S4["④ 部署上线<br/>easy-deploy"]
+    SX["旁路 · 演示与对齐<br/>product-demo · project-kickoff<br/>presentation-design"]
+
+    S0 --> S1 --> S2 --> S25 --> S3 --> S35 --> S4
+    S2 -.-> SX
+    SX -.-> S4
+
+    classDef stage fill:#fafafa,stroke:#2a1e13,color:#2a1e13,stroke-width:1.2px
+    classDef side fill:#fafafa,stroke:#2a1e13,color:#2a1e13,stroke-dasharray:4 3
+    class S0,S1,S2,S25,S3,S35,S4 stage
+    class SX side
+      </pre>
+    </div>
+  </div>
+
+  <p class="meta" style="margin-top:16px;color:var(--faint);max-width:64ch">节点合并为阶段、虚线为旁路。元能力 skill-creator（技能工厂）不入主链，面向本套 harness 本身的迭代。</p>
+
   <!-- harness 自循环 callout -->
   <div class="callout">
     <div class="ck">— 五件套自循环</div>
