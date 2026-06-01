@@ -230,8 +230,8 @@
   <div class="layers">
     <div class="layer">
       <div class="tag"><span>产品形态</span><b>Desktop · macOS</b></div>
-      <h3>30 秒产品钩子</h3>
-      <div class="desc">调用公司内部 Claude API 的 macOS 桌面客户端，形态对标 Cursor / Claude Desktop。我每天把它当 PM 副驾驶用，同时也用它跑测自己的 Agent Harness——边用边发现 skill / rule / memory 的边界问题，回头修整套体系，也迭代产品本身。</div>
+      <h3>它是什么</h3>
+      <div class="desc">自研 macOS 桌面客户端，支持 Agent 异步执行任务，形态接近 Codex 的本地版。它是 Agent Harness 五件套的真实跑测环境——每跑一轮就能发现 skill / rule / memory 的边界问题，反过来驱动整套体系迭代。</div>
       <video src="https://reasty.oss-cn-hangzhou.aliyuncs.com/openclaude.mp4" controls playsinline preload="metadata" style="width:100%;border-radius:4px;margin-top:16px"></video>
     </div>
     <div class="layer">
@@ -240,7 +240,7 @@
       <div class="desc">从立项到形态选型的完整思考链。</div>
       <ul>
         <li><span class="ord">01</span><b>定位</b> · 拿到内部模型 API 资源后，需要一个能自己长期维护的端到端产品，把 PM 工作流真正落到产品决策上，而不只停留在 prompt 层</li>
-        <li><span class="ord">02</span><b>形态选型</b> · 选客户端而非 Web，对齐 Cursor / Claude Desktop 这类已被市场验证的 Agent 工作台形态</li>
+        <li><span class="ord">02</span><b>形态选型</b> · 选客户端而非 Web，对齐 Codex 这类 Agent 异步执行平台的本地化形态——任务下发后 agent 自主跑、分步交付结果</li>
         <li><span class="ord">03</span><b>纵深目的</b> · 本职在做的电商 AI Agent 也是端形态产品，openclaude 让我在自有项目中深入 agent 执行、工具调用、记忆存储等技术细节，直接用到本职工作上；同时它也是 Agent Harness 五件套的真实跑测场，反过来驱动整套体系迭代</li>
       </ul>
     </div>
@@ -301,7 +301,7 @@ flowchart LR
         <div class="count">从需求塑形到上线部署 · 全链路覆盖</div>
       </div>
       <div class="body-col">
-        <p>17 个 skill 覆盖完整 SDLC——<b>松耦合可独立运行，也能端到端串联</b>。每个 skill 都是一份 SOP 化的 markdown，agent 触发后按章节走，不靠即兴发挥。</p>
+        <p>17 个 skill 覆盖完整 SDLC——<b>松耦合可独立运行，也能端到端串联</b>。每个 skill 是一个完整的执行单元——SOP 流程 + 脚本 + 产出模板 + 边界约束，agent 触发后按结构走，不靠即兴发挥。</p>
         <ul>
           <li><b>分层链路</b>：idea-shaping → product-research / requirement-analysis → product-design → ui-design / tech-design → dev-planning → spec-driven-frontend / spec-driven-backend / ai-agent-engineering → test-guard → easy-deploy</li>
           <li><b>_shared/ 协议复用</b>：跨 skill 复用的协议（AI Agent 项目两步判定、5 维度设计评审、9 段式 DESIGN.md 等）统一抽到 <code style="font-family:var(--mono);font-size:13px">_shared/</code>，单 skill 内禁止重复造轮子</li>
